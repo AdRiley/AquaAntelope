@@ -7,7 +7,8 @@ add_definitions(-std=c++0x)
 set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 
 set(sources
-   main.cpp)
+    main.cpp
+    cursesWindow.cpp)
 add_executable(AquaAntelope ${sources})
 target_link_libraries(AquaAntelope pthread)
 target_link_libraries(AquaAntelope gmock)
