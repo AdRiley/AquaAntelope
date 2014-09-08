@@ -21,6 +21,21 @@ cursesWindow::~cursesWindow()
     refresh();
 }
 
+/*static*/ void cursesWindow::DrawMap(const std::vector<std::vector<int>>& v)
+{
+    int y = 0;
+    for(auto yv : v)
+    {
+        int x = 0;
+        for(auto t : yv)
+        {
+            mvaddstr(y, x, (t==0 ? "." : "#"));
+            ++x;
+        }
+        ++y;
+    }
+}
+
 /*static*/ void cursesWindow::DrawPlayer(const int x, const int y)
 {
     mvaddstr(y, x, "@");
