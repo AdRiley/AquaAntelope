@@ -3,6 +3,12 @@
 #include <curses.h>
 #include <vector>
 
+enum class Tile
+{
+    Floor,
+    Wall
+};
+
 class cursesWindow
 {
     WINDOW* m_win;
@@ -12,7 +18,7 @@ public:
     ~cursesWindow();
 
     static void DrawPlayer(const int x, const int y);
-    static void DrawMap(const std::vector<std::vector<int>>& v);
+    static void DrawMap(const std::vector<std::vector<Tile>>& v);
     static bool HandleKeyPress(int& nPlayerX, int& nPlayerY);
     static void Clear();
 };
