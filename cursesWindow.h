@@ -2,12 +2,7 @@
 #include <stdio.h>
 #include <curses.h>
 #include <vector>
-
-enum class Tile
-{
-    Floor,
-    Wall
-};
+#include "tile.h"
 
 class cursesWindow
 {
