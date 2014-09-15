@@ -9,7 +9,8 @@ set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 set(sources
     main.cpp
     cursesWindow.cpp
-    GameMap.cpp)
+    GameMap.cpp
+    GameEngine.cpp)
 add_executable(AquaAntelope ${sources})
 target_link_libraries(AquaAntelope pthread)
 target_link_libraries(AquaAntelope gmock)
