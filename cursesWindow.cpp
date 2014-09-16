@@ -21,7 +21,7 @@ cursesWindow::~cursesWindow()
     refresh();
 }
 
-/*static*/ void cursesWindow::DrawMap(const std::vector<std::vector<Tile>>& v)
+/*static*/ void cursesWindow::DrawMap(const std::vector<std::vector<TileType>>& v)
 {
     int y = 0;
     for(auto yv : v)
@@ -29,7 +29,7 @@ cursesWindow::~cursesWindow()
         int x = 0;
         for(auto t : yv)
         {
-            mvaddstr(y, x, (t==Tile::Floor ? "." : "#"));
+            mvaddstr(y, x, (t==TileType::Floor ? "." : "#"));
             ++x;
         }
         ++y;

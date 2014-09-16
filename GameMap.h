@@ -2,12 +2,12 @@
 #define GAMEMAP_H
 
 #include <vector>
-#include "tile.h"
+#include "TileType.h"
 
 class GameMap
 {
 public:
-    std::vector<std::vector<Tile>> map;
+    std::vector<std::vector<TileType>> map;
 
     GameMap(std::initializer_list<std::initializer_list<int>> l);
 };

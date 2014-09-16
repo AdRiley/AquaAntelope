@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <curses.h>
 #include <vector>
-#include "tile.h"
+#include "TileType.h"
 
 class cursesWindow
 {
@@ -13,7 +13,7 @@ public:
     ~cursesWindow();
 
     static void DrawPlayer(const int x, const int y);
-    static void DrawMap(const std::vector<std::vector<Tile>>& v);
+    static void DrawMap(const std::vector<std::vector<TileType>>& v);
     static bool HandleKeyPress(int& nPlayerX, int& nPlayerY);
     static void Clear();
 };
