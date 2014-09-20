@@ -3,6 +3,16 @@
 #include <curses.h>
 #include <vector>
 #include "TileType.h"
+#include "Player.h"
+
+enum class Command
+{
+    Up,
+    Down,
+    Left,
+    Right,
+    Exit
+};
 
 class cursesWindow
 {
@@ -12,10 +22,10 @@ public:
     cursesWindow();
     ~cursesWindow();
 
-    static void DrawPlayer(const int x, const int y);
+    static void DrawPlayer(Player player);
     static void DrawMap(const std::vector<std::vector<TileType>>& v);
-    static bool HandleKeyPress(int& nPlayerX, int& nPlayerY);
     static void Clear();
+    Command GetCommand();
 };
 
 

@@ -36,41 +36,39 @@ cursesWindow::~cursesWindow()
     }
 }
 
-/*static*/ void cursesWindow::DrawPlayer(const int x, const int y)
+/*static*/ void cursesWindow::DrawPlayer(Player player)
 {
-    mvaddstr(y, x, "@");
+    mvaddstr(player.m_PosY, player.m_PosX, "@");
     refresh();
 }
 
-/*static*/ bool cursesWindow::HandleKeyPress(int& nPlayerX, int& nPlayerY)
+Command cursesWindow::GetCommand()
 {
-    int keyPress = getch();
-
-    switch( keyPress )
+    while (true)
     {
-        // Move down
-        case KEY_DOWN:
-            nPlayerY++;
-            break;
-        // Move left
-        case KEY_LEFT:
-            nPlayerX--;
-            break;
-        // Move right
-        case KEY_RIGHT:
-            nPlayerX++;
-            break;
-        // Move up
-        case KEY_UP:
-            nPlayerY--;
-            break;
-        case KEY_BACKSPACE:
-            return false;
-            break;
-        default:
-            break;
+        int keyPress = getch();
+
+        switch( keyPress )
+        {
+            case KEY_DOWN:
+                return Command::Down;
+                break;
+            case KEY_LEFT:
+                return Command::Left;
+                break;
+            case KEY_RIGHT:
+                return Command::Right;
+                break;
+            case KEY_UP:
+                return Command::Up;
+                break;
+            case KEY_BACKSPACE:
+                return Command::Exit;
+                break;
+            default:
+                break;
+        }
     }
-    return true;
 }
 /*static*/ void cursesWindow::Clear()
 {

@@ -1,9 +1,8 @@
 #include "GameEngine.h"
 
-GameEngine::GameEngine() :
-    nPlayerX{12},
-    nPlayerY{12},
-    firstMap{
+GameEngine::GameEngine()
+    : m_Player{12, 12}
+    , firstMap{
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
     { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
     { 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 },
@@ -25,7 +24,12 @@ GameEngine::GameEngine() :
 
 bool GameEngine::TryMove(const int nDeltaX, int nDeltaY)
 {
-    nPlayerX += nDeltaX;
-    nPlayerY += nDeltaY;
+    m_Player.m_PosX += nDeltaX;
+    m_Player.m_PosY += nDeltaY;
     return true;
+}
+
+const Player& GameEngine::GetPlayer() const
+{
+    return m_Player;
 }

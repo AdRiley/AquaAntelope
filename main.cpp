@@ -3,7 +3,7 @@
 #include <vector>
 #include "cursesWindow.h"
 #include "GameEngine.h"
-
+//#include "GameView.h"
 
 int main(void) {
 
@@ -14,11 +14,26 @@ int main(void) {
     {
         cursesWindow::Clear();
         cursesWindow::DrawMap(mainEngine.firstMap.map);
-        cursesWindow::DrawPlayer(mainEngine.nPlayerX, mainEngine.nPlayerY);
+        cursesWindow::DrawPlayer(mainEngine.GetPlayer());
 
-        if(!cursesWindow::HandleKeyPress(mainEngine.nPlayerX, mainEngine.nPlayerY))
-            break;
+        switch (mainwin.GetCommand())
+        {
+            case Command::Up:
+                mainEngine.TryMove(0, -1);
+                break;
+            case Command::Down:
+                mainEngine.TryMove(0, 1);
+                break;
+            case Command::Left:
+                mainEngine.TryMove(-1, 0);
+                break;
+            case Command::Right:
+                mainEngine.TryMove(1, 0);
+                break;
+            case Command::Exit:
+                return 0;
+                break;
+        }
     }
-
     return 0;
 }
