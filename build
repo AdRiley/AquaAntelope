@@ -1,0 +1,7 @@
+#!/bin/bash
+# My first script
+
+cd mybuild
+make
+./runUnitTests
+cd ..
